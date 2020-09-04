@@ -1,0 +1,12 @@
+{
+  "name": "note-plus-react-native",
+  "displayName": "note-plus-react-native",
+  "expo": {
+    "name": "note-plus-react-native",
+    "slug": "note-plus-react-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
