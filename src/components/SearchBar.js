@@ -1,32 +1,36 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
-import { Container, Header, Item, Icon, Input, Button } from "native-base";
+import { Text, StyleSheet, StatusBar } from "react-native";
+import {
+  Container,
+  Header,
+  Item,
+  Icon,
+  Input,
+  Button,
+  View
+} from "native-base";
 
 const SearchBar = () => {
   return (
-    <Header
-      searchBar
-      rounded
-      style={styles.buttonContainer}
-      androidStatusBarColor="#fbbc04"
-    >
-      <Item>
-        <Icon name="ios-search" />
-        <Input
-          placeholder="Pesquisar suas notas"
-          placeholderTextColor="#bcbfc1"
-        />
-        <Icon name="ios-people" />
-      </Item>
-      <Button transparent>
-        <Text>Search</Text>
-      </Button>
-    </Header>
+    <Container>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <View style={styles.buttonContainer}>
+        <Item regular style={styles.item}>
+          <Icon name="ios-search" style={styles.icon} />
+          <Input
+            placeholder="Pesquisar suas notas"
+            placeholderTextColor="#bcbfc1"
+          />
+        </Item>
+      </View>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
-
+  icon: {
+    color: "#737373"
+  },
   input: {
     color: "#bcbfc1"
   },
@@ -41,6 +45,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 1.0
+  },
+  item: {
+    borderRadius: 10
   }
 });
 
