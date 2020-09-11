@@ -1,14 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, StatusBar } from "react-native";
-import {
-  Container,
-  Header,
-  Item,
-  Icon,
-  Input,
-  Button,
-  View
-} from "native-base";
+import { Container, Item, Icon, Input, View } from "native-base";
 
 const SearchBar = () => {
   return (

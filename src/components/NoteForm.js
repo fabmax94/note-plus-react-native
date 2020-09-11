@@ -1,8 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Content, Item, Input, Textarea } from "native-base";
+import changeNavigationBarColor from "react-native-navigation-bar-color";
 
 const NoteForm = () => {
+  changeNavigationBarColor("#ffffff");
   return (
     <Content style={styles.content}>
       <Item style={styles.item}>
