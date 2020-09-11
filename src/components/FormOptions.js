@@ -12,12 +12,18 @@ import {
   Body,
   Right
 } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 
 const FormOptions = () => {
+  const navigation = useNavigation();
   return (
     <Container style={styles.container}>
       <Left>
-        <Button transparent style={styles.button}>
+        <Button
+          transparent
+          style={styles.button}
+          onPress={() => navigation.navigate("EditorOptionsScreen")}
+        >
           <Icon name="plus-square" type="Feather" style={styles.icon} />
         </Button>
       </Left>
