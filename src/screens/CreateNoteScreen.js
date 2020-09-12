@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Container, Text } from "native-base";
+import React from "react";
+import { Container } from "native-base";
 import HeaderForm from "../components/HeaderForm";
 import FormOptions from "../components/FormOptions";
 import NoteForm from "../components/NoteForm";

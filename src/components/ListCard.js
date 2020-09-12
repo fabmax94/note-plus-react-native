@@ -25,7 +25,7 @@ const DATA = [
     text: "Esta automação blçaalblabla\nvai dar mutio certo"
   }
 ];
-const ListCard = () => {
+const ListCard = ({ items }) => {
   const renderItem = ({ item }) => (
     <Content>
       <Card style={styles.card}>
@@ -43,7 +43,7 @@ const ListCard = () => {
 
   return (
     <FlatList
-      data={DATA}
+      data={items}
       renderItem={renderItem}
       columnWrapperStyle={{
         flex: 1,
@@ -63,8 +63,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   card: {
-    width: "95%",
-    borderRadius: 8
+    borderRadius: 8,
+    marginRight: 5,
+    marginLeft: 5
   },
   cardItemHeader: {
     borderTopLeftRadius: 8,

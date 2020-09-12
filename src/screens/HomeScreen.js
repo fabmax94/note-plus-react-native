@@ -1,17 +1,20 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { Container, Fab, Icon, Button } from "native-base";
+import { Container, Fab, Icon } from "native-base";
 import SearchBar from "../components/SearchBar";
 import ListCard from "../components/ListCard";
+import useFirebase from "../hooks/useFirebase";
+import { useIsFocused } from "@react-navigation/native";
 
 const HomeScreen = ({ navigation }) => {
+  const [notes] = useFirebase(useIsFocused(), "note");
   return (
     <SafeAreaView style={styles.container}>
       <Container style={styles.containerSearchBar}>
         <SearchBar />
       </Container>
       <Container style={styles.containerListCard}>
-        <ListCard />
+        <ListCard items={notes} />
       </Container>
 
       <Fab
