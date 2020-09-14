@@ -1,14 +1,7 @@
 import React from "react";
-import { FlatList, StyleSheet, ScrollView } from "react-native";
-import {
-  Card,
-  CardItem,
-  Content,
-  Body,
-  Text,
-  Container,
-  View
-} from "native-base";
+import { FlatList, StyleSheet, ScrollView } from 'react-native';
+import { Card, CardItem, Content, Body, Text } from 'native-base';
+import FormItems from "./FormItems";
 
 const ListCard = ({ items }) => {
   const renderItem = ({ item }) => (
@@ -19,7 +12,11 @@ const ListCard = ({ items }) => {
         </CardItem>
         <CardItem style={styles.cardItemBody}>
           <Body>
-            <Text note>{item.text}</Text>
+            {item.editorType === "list" ? (
+              <FormItems items={item.items} onlyVisible={true} />
+            ) : (
+              <Text note>{item.text}</Text>
+            )}
           </Body>
         </CardItem>
       </Card>

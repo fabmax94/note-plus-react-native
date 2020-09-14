@@ -1,23 +1,47 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { Container, Item, Input, Icon, Text, Content, View } from "native-base";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Container, Icon, Text, View } from "native-base";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const EditorOptionsScreen = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
   return (
     <Container style={styles.container}>
       <View style={styles.viewContainer} />
-      <View style={styles.view}>
-        <Icon name="image" type="Feather" style={styles.icon} />
-        <Text>Adicionar imagem</Text>
-      </View>
-      <View style={styles.view}>
-        <Icon name="checksquareo" type="AntDesign" style={styles.icon} />
-        <Text>Caixas de seleção</Text>
-      </View>
-      <View style={styles.view}>
-        <Icon name="pencil" type="EvilIcons" style={styles.icon} />
-        <Text>Nota</Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+          route.params.onHandleOption("piture");
+        }}
+      >
+        <View style={styles.view}>
+          <Icon name="image" type="Feather" style={styles.icon} />
+          <Text>Adicionar imagem</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+          route.params.onHandleOption("list");
+        }}
+      >
+        <View style={styles.view}>
+          <Icon name="checksquareo" type="AntDesign" style={styles.icon} />
+          <Text>Caixas de seleção</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+          route.params.onHandleOption("text");
+        }}
+      >
+        <View style={styles.view}>
+          <Icon name="pencil" type="EvilIcons" style={styles.icon} />
+          <Text>Nota</Text>
+        </View>
+      </TouchableOpacity>
     </Container>
   );
 };

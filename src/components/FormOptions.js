@@ -1,20 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import {
-  Container,
-  Header,
-  Item,
-  Icon,
-  Input,
-  Button,
-  Text,
-  Left,
-  Body,
-  Right
-} from "native-base";
+import { Container, Icon, Button, Text, Left, Body, Right } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-const FormOptions = () => {
+const FormOptions = ({ onHandleOption }) => {
   const navigation = useNavigation();
   return (
     <Container style={styles.container}>
@@ -22,7 +11,11 @@ const FormOptions = () => {
         <Button
           transparent
           style={styles.button}
-          onPress={() => navigation.navigate("EditorOptionsScreen")}
+          onPress={() =>
+            navigation.navigate("EditorOptionsScreen", {
+              onHandleOption: onHandleOption
+            })
+          }
         >
           <Icon name="plus-square" type="Feather" style={styles.icon} />
         </Button>
@@ -50,6 +43,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12
+  },
+  button: {
+    width: 80
   }
 });
 
