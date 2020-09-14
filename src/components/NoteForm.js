@@ -56,9 +56,6 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 22
-  },
-  textarea: {
-    flex: 1
   }
 });
 

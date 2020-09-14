@@ -79,29 +79,37 @@ const FormItems = ({ items, onChange, onlyVisible }) => {
   };
   return (
     <Content>
-      <View style={styles.listContainer}>
-        <DraggableFlatList
-          data={itemList}
-          renderItem={({ item, index, drag, isActive }) =>
-            showRow(item, drag, index)
-          }
-          keyExtractor={(item, index) => index}
-          onDragEnd={({ data }) => {
-            setItemList([...data]);
-            onChange([...data]);
-          }}
-        />
-      </View>
       {!onlyVisible ? (
-        <TouchableOpacity onPress={addItem}>
-          <View style={styles.viewAdd}>
-            <Button transparent>
-              <Icon name="plus" type="FontAwesome" style={styles.iconAdd} />
-            </Button>
-            <Text style={styles.textAdd}>Item da lista</Text>
+        <>
+          <View style={styles.listContainer}>
+            <DraggableFlatList
+              data={itemList}
+              renderItem={({ item, index, drag, isActive }) =>
+                showRow(item, drag, index)
+              }
+              keyExtractor={(item, index) => `ìtems${index}`}
+              onDragEnd={({ data }) => {
+                setItemList([...data]);
+                onChange([...data]);
+              }}
+            />
           </View>
-        </TouchableOpacity>
-      ) : null}
+          <TouchableOpacity onPress={addItem}>
+            <View style={styles.viewAdd}>
+              <Button transparent>
+                <Icon name="plus" type="FontAwesome" style={styles.iconAdd} />
+              </Button>
+              <Text style={styles.textAdd}>Item da lista</Text>
+            </View>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <View style={styles.listContainer}>
+          {itemList.map((item, index) =>
+            showRow(item, () => console.log("mock drag"), index)
+          )}
+        </View>
+      )}
     </Content>
   );
 };

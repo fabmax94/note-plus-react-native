@@ -8,7 +8,7 @@ import useFirebase from "../hooks/useFirebase";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
 const CreateNoteScreen = () => {
-  changeNavigationBarColor("#ffffff");
+  changeNavigationBarColor("white");
   const [notes, setNote] = useFirebase(false, "note");
   const [type, setType] = useState("text");
   return (
