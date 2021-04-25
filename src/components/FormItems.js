@@ -16,7 +16,12 @@ const FormItems = ({ items, onChange, onlyVisible }) => {
   const [itemList, setItemList] = useState(items);
   const [focusIndex, setFocusIndex] = useState(0);
   const handleChange = (index, newValue) => {
-    itemList[index] = newValue;
+    itemList[index].text = newValue;
+    setItemList(itemList);
+    onChange(itemList);
+  };
+  const handleCheck = (index, newChecked) => {
+    itemList[index].isChecked = newChecked;
     setItemList(itemList);
     onChange(itemList);
   };
@@ -25,7 +30,7 @@ const FormItems = ({ items, onChange, onlyVisible }) => {
     onChange(itemList.filter((item, index) => index != indexToDelete));
   };
   const addItem = () => {
-    setItemList([...itemList, ""]);
+    setItemList([...itemList, {isChecked: false, text: ""}]);
     onChange(itemList);
   };
   const showRow = (item, drag, index) => {
@@ -38,12 +43,12 @@ const FormItems = ({ items, onChange, onlyVisible }) => {
             style={{ ...styles.iconDrag, fontSize: 18 }}
           />
           <Icon
-            name="checksquareo"
+            name={item.isChecked ? "checksquare" : "checksquareo"}
             type="AntDesign"
             style={{ ...styles.iconDrag, fontSize: 14 }}
           />
           <Text note style={{ alignSelf: "center", fontSize: 14 }}>
-            {item}
+            {item.text}
           </Text>
         </View>
       );
@@ -56,10 +61,10 @@ const FormItems = ({ items, onChange, onlyVisible }) => {
             type="MaterialCommunityIcons"
             style={styles.iconDrag}
           />
-          <CheckBox checked={true} style={styles.checkbox} color="#7a7a7a" />
+          <CheckBox checked={item.isChecked} onPress={() => handleCheck(index, !item.isChecked)} style={styles.checkbox} color="#7a7a7a" />
           <Item style={styles.item}>
             <Input
-              value={item}
+              value={item.text}
               onChangeText={text => handleChange(index, text)}
               style={styles.input}
               autoFocus={true}

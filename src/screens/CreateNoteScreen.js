@@ -7,20 +7,20 @@ import { StyleSheet } from "react-native";
 import useFirebase from "../hooks/useFirebase";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
-const CreateNoteScreen = () => {
-  changeNavigationBarColor("white");
-  const [notes, setNote] = useFirebase(false, "note");
-  const [type, setType] = useState("text");
+const CreateNoteScreen = ({ route }) => {
+  changeNavigationBarColor("white", true, true);
+  const [, setNote] = useFirebase(false, "note");
+  const [type, setType] = useState(route.params?.note.editorType || "text");
   return (
     <Container>
       <Container style={styles.containerHeaderForm}>
-        <HeaderForm />
+        <HeaderForm/>
       </Container>
       <Container style={styles.containerNoteForm}>
-        <NoteForm onHandleSave={setNote} editorType={type} />
+        <NoteForm onHandleSave={setNote} preNote={route.params?.note} editorType={type}/>
       </Container>
       <Container style={styles.containerFormOptions}>
-        <FormOptions onHandleOption={setType} />
+        <FormOptions onHandleOption={setType}/>
       </Container>
     </Container>
   );

@@ -8,40 +8,43 @@ const EditorOptionsScreen = () => {
   const route = useRoute();
   return (
     <Container style={styles.container}>
-      <View style={styles.viewContainer} />
-      <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-          route.params.onHandleOption("piture");
-        }}
-      >
-        <View style={styles.view}>
-          <Icon name="image" type="Feather" style={styles.icon} />
-          <Text>Adicionar imagem</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-          route.params.onHandleOption("list");
-        }}
-      >
-        <View style={styles.view}>
-          <Icon name="checksquareo" type="AntDesign" style={styles.icon} />
-          <Text>Caixas de seleção</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-          route.params.onHandleOption("text");
-        }}
-      >
-        <View style={styles.view}>
-          <Icon name="pencil" type="EvilIcons" style={styles.icon} />
-          <Text>Nota</Text>
-        </View>
-      </TouchableOpacity>
+      <TouchableOpacity style={{ flex: 4 }}
+                        onPress={() => navigation.goBack()}/>
+      <View style={styles.viewContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            route.params.onHandleOption("picture");
+          }}
+        >
+          <View style={styles.view}>
+            <Icon name="image" type="Feather" style={styles.icon}/>
+            <Text>Adicionar imagem</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            route.params.onHandleOption("list");
+          }}
+        >
+          <View style={styles.view}>
+            <Icon name="checksquareo" type="AntDesign" style={styles.icon}/>
+            <Text>Caixas de seleção</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            route.params.onHandleOption("text");
+          }}
+        >
+          <View style={styles.view}>
+            <Icon name="pencil" type="EvilIcons" style={styles.icon}/>
+            <Text>Nota</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </Container>
   );
 };
@@ -55,27 +58,19 @@ const styles = StyleSheet.create({
   },
   view: {
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     paddingHorizontal: 10,
     paddingVertical: 15,
     alignItems: "center"
   },
   icon: {
     marginRight: 20,
-    color: "#7a7a7a",
+    color: "black",
     fontSize: 20
   },
   viewContainer: {
-    shadowRadius: 2,
-    shadowOpacity: 1,
-    shadowOffset: {
-      width: 0,
-      height: -3
-    },
-    shadowColor: "#000000",
-    elevation: 4,
-    height: 5,
-    backgroundColor: "white"
+    backgroundColor: "#f6f6f6",
+    flex: 1
   }
 });
 

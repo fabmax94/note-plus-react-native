@@ -8,7 +8,7 @@ import { useIsFocused } from "@react-navigation/native";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
 const HomeScreen = ({ navigation }) => {
-  changeNavigationBarColor("white");
+  changeNavigationBarColor("white", true, true);
   const [notes] = useFirebase(useIsFocused(), "note");
   return (
     <SafeAreaView style={styles.container}>

@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Content, Item, Input, Textarea, View, Container } from "native-base";
 import FormItems from "./FormItems";
 import FormText from "./FormText";
 
-const NoteForm = ({ onHandleSave, editorType }) => {
+const NoteForm = ({ onHandleSave, editorType, preNote }) => {
   const [note, setNote] = useState({
-    title: "",
-    text: "",
-    editorType: editorType,
-    items: []
+    key: preNote?.key || "",
+    title: preNote?.title || "",
+    text: preNote?.text || "",
+    editorType: preNote?.editorType || editorType,
+    items: preNote?.items || []
   });
   const onHandleBlur = () => {
     if (note.title || note.text) {
@@ -19,8 +20,13 @@ const NoteForm = ({ onHandleSave, editorType }) => {
   };
 
   const onHandleChangeItems = items => {
-    setNote({ ...note, items });
+    let key = onHandleSave({ ...note, items });
+    setNote({ ...note, items, key });
   };
+
+  useEffect(() => {
+    setNote({ ...note, editorType });
+  }, [editorType]);
 
   return (
     <Content style={styles.content}>
@@ -30,17 +36,19 @@ const NoteForm = ({ onHandleSave, editorType }) => {
           style={styles.input}
           placeholderTextColor="#a7a6a6"
           onBlur={onHandleBlur}
+          value={note.title}
           onChangeText={title => setNote({ ...note, title })}
         />
       </Item>
       <Container>
-        {editorType === "text" ? (
+        {note.editorType === "text" ? (
           <FormText
             onChange={text => setNote({ ...note, text })}
             onBlur={onHandleBlur}
+            value={note.text}
           />
         ) : (
-          <FormItems items={note.items} onChange={onHandleChangeItems} />
+          <FormItems items={note.items} onChange={onHandleChangeItems}/>
         )}
       </Container>
     </Content>
@@ -49,7 +57,8 @@ const NoteForm = ({ onHandleSave, editorType }) => {
 
 const styles = StyleSheet.create({
   item: {
-    borderColor: "transparent"
+    borderColor: "transparent",
+    flex: 1
   },
   content: {
     paddingHorizontal: 10

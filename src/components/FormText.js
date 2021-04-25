@@ -2,7 +2,7 @@ import React from "react";
 import { Textarea } from "native-base";
 import { StyleSheet } from "react-native";
 
-const FormText = ({ onChange, onBlur }) => {
+const FormText = ({ onChange, onBlur, value }) => {
   return (
     <Textarea
       rowSpan={5}
@@ -11,6 +11,7 @@ const FormText = ({ onChange, onBlur }) => {
       style={styles.textarea}
       onBlur={onBlur}
       onChangeText={onChange}
+      value={value}
     />
   );
 };

@@ -24,16 +24,13 @@ export default (shouldWatch, nodePath, keyFilter = null) => {
 
   const save = objToSubmit => {
     let ref;
-    let id;
     if (objToSubmit.key) {
       ref = firebaseDatabase.ref(nodePath).child(objToSubmit.key);
-      id = objToSubmit.key;
     } else {
       ref = firebaseDatabase.ref(nodePath).push();
-      id = firebaseDatabase.ref(nodePath).push().key;
     }
     ref.set(objToSubmit);
-    return id;
+    return ref.key;
   };
 
   useEffect(() => {
