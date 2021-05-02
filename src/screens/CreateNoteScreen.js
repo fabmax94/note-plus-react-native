@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "native-base";
+import { View, Container } from "native-base";
 import HeaderForm from "../components/HeaderForm";
 import FormOptions from "../components/FormOptions";
 import NoteForm from "../components/NoteForm";
@@ -13,28 +13,28 @@ const CreateNoteScreen = ({ route }) => {
   const [type, setType] = useState(route.params?.note.editorType || "text");
   return (
     <Container>
-      <Container style={styles.containerHeaderForm}>
+      <View style={styles.containerHeaderForm}>
         <HeaderForm/>
-      </Container>
-      <Container style={styles.containerNoteForm}>
+      </View>
+      <View style={styles.containerNoteForm}>
         <NoteForm onHandleSave={setNote} preNote={route.params?.note} editorType={type}/>
-      </Container>
-      <Container style={styles.containerFormOptions}>
+      </View>
+      <View style={styles.containerFormOptions}>
         <FormOptions onHandleOption={setType}/>
-      </Container>
+      </View>
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
   containerNoteForm: {
-    flex: 20
-  },
-  containerFormOptions: {
     flex: 1
   },
+  containerFormOptions: {
+
+  },
   containerHeaderForm: {
-    flex: 2
+
   }
 });
 

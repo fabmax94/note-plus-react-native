@@ -40,7 +40,7 @@ const NoteForm = ({ onHandleSave, editorType, preNote }) => {
           onChangeText={title => setNote({ ...note, title })}
         />
       </Item>
-      <Container>
+      <View>
         {note.editorType === "text" ? (
           <FormText
             onChange={text => setNote({ ...note, text })}
@@ -50,7 +50,7 @@ const NoteForm = ({ onHandleSave, editorType, preNote }) => {
         ) : (
           <FormItems items={note.items} onChange={onHandleChangeItems}/>
         )}
-      </Container>
+      </View>
     </Content>
   );
 };

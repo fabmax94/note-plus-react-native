@@ -1,12 +1,12 @@
 import React from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
-import { Left, Icon, Button, Right, Container } from "native-base";
+import { StatusBar, StyleSheet } from "react-native";
+import { Left, Icon, Button, Right, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 const HeaderForm = () => {
   const navigation = useNavigation();
   return (
-    <Container>
+    <View style={{height: 60}}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <View style={styles.header}>
         <Left>
@@ -20,7 +20,7 @@ const HeaderForm = () => {
         </Left>
         <Right />
       </View>
-    </Container>
+    </View>
   );
 };
 

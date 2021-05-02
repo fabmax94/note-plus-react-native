@@ -33,6 +33,11 @@ export default (shouldWatch, nodePath, keyFilter = null) => {
     return ref.key;
   };
 
+  const remove = objToDelete => {
+    const ref = firebaseDatabase.ref(nodePath).child(objToDelete.key);
+    ref.remove();
+  };
+
   useEffect(() => {
     if (shouldWatch) {
       console.log("Listener ON");
@@ -47,5 +52,5 @@ export default (shouldWatch, nodePath, keyFilter = null) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldWatch]);
 
-  return [items, save];
+  return [items, save, remove];
 };

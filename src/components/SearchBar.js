@@ -1,21 +1,23 @@
 import React from "react";
-import { Text, StyleSheet, StatusBar } from "react-native";
-import { Container, Item, Icon, Input, View } from "native-base";
+import { StyleSheet, StatusBar } from "react-native";
+import { Item, Icon, Input, View } from "native-base";
 
-const SearchBar = () => {
+const SearchBar = ({query, setQuery}) => {
   return (
-    <Container>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
+    <View>
+      <StatusBar backgroundColor="white" barStyle="dark-content"/>
       <View style={styles.buttonContainer}>
         <Item regular style={styles.item}>
-          <Icon name="ios-search" style={styles.icon} />
+          <Icon name="ios-search" style={styles.icon}/>
           <Input
             placeholder="Pesquisar suas notas"
             placeholderTextColor="#bcbfc1"
+            value={query}
+            onChangeText={setQuery}
           />
         </Item>
       </View>
-    </Container>
+    </View>
   );
 };
 

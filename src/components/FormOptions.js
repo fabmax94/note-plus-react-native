@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { Container, Icon, Button, Text, Left, Body, Right } from "native-base";
+import { View, Icon, Button, Text, Left, Body, Right } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 const FormOptions = ({ onHandleOption }) => {
   const navigation = useNavigation();
   return (
-    <Container style={styles.container}>
+    <View style={styles.container}>
       <Left>
         <Button
           transparent
@@ -28,13 +28,13 @@ const FormOptions = ({ onHandleOption }) => {
           <Icon name="more-vertical" type="Feather" style={styles.icon} />
         </Button>
       </Right>
-    </Container>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 40,
     flexDirection: "row"
   },
   icon: {
